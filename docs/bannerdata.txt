@@ -99,6 +99,110 @@ let banners = [
                   active: false,
                   rolls: 400
               },
+              // LAST UPDATED FOR DECEMBER SCHEDULE https://x.com/umamusume_eng/status/1995311950658781602
+              // From here on out, the rest are the uma.moe estimations.
+              {
+                  id: 11,
+                  name: "Oguri Cap (Christmas) & Biwa Hayahide (Christmas)",
+                  endDate: "2026-1-18",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30056.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 12,
+                  name: "Mayano Top Gun (Speed SSR) & Narita Taishin (Wit SSR)",
+                  endDate: "2026-1-18",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30057.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 13,
+                  name: "Fine Motion",
+                  endDate: "2026-1-22",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30058.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 14,
+                  name: "Manhattan Cafe (Stamina SSR) & Inari One (Power SR)",
+                  endDate: "2026-1-22",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30059.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 15,
+                  name: "Tamamo Cross",
+                  endDate: "2026-1-28",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30060.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 16,
+                  name: "Nice Nature (Wit SSR) & Oguri Cap (Power SSR)",
+                  endDate: "2026-1-28",
+                  isUma: false,
+                  isRerun: true,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30061.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 17,
+                  name: "Haru Urara (New Year) & T.M. Opera O (New Year)",
+                  endDate: "2026-2-6",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30062.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 18,
+                  name: "Admire Vega (Power SSR) & Matikanefukukitaru (Speed SSR)",
+                  endDate: "2026-2-6",
+                  isUma: false,
+                  isRerun: true,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30063.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 19,
+                  name: "Character Gacha",
+                  endDate: "2026-2-11",
+                  isUma: true,
+                  isRerun: true,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30064.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 20,
+                  name: "Sasami Anshinzawa (Pal SSR) & Tamamo Cross (Guts SR)",
+                  endDate: "2026-2-11",
+                  isUma: false,
+                  isRerun: true,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30065.png",
+                  active: false,
+                  rolls: 400
+              },
+
+
             ];
 
             let events = [
@@ -130,6 +234,18 @@ let banners = [
                     id: 5,
                     name: "Orchestra in Late Autumn Story Event",
                     date: "2025-12-14",
+                    carats: 2270
+                },
+                {
+                    id: 6,
+                    name: "Miracles of the Holy Night Story Event",
+                    date: "2026-1-3",
+                    carats: 2270
+                },
+                {
+                    id: 7,
+                    name: "Blossoming New Year's Karuta Contest Story Event",
+                    date: "2026-1-26",
                     carats: 2270
                 },
                 {
