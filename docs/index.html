@@ -74,7 +74,7 @@
         }
 
         .panel h2::before {
-            content: "★";
+            content: "℧";
             color: #ffcc00;
         }
 
@@ -196,14 +196,9 @@
             color: #666;
         }
 
-        .banner-tag.support {
+        .banner-tag.uma {
             background: #e6f0ff;
             color: #4488ff;
-        }
-
-        .banner-tag.uma {
-            background: #ffe6f5;
-            color: #ff66b3;
         }
 
         .banner-tag.rerun {
@@ -311,15 +306,13 @@
             }
         }
 
-        .logo-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo-icon">🏇</div>
+        <div class="logo">
+            <img src="carat-icon.png" alt="Carat Icon" class="logo-icon" width="128" height="128"onerror="this.style.display='none'">
+        </div>
         <h1>Umamusume Carat Calculator</h1>
         <div class="subtitle">Plan your pulls and manage your carats!</div>
     </header>
@@ -329,7 +322,7 @@
         <div class="input-grid">
             <div class="input-group">
                 <label for="initialCarats">Initial Carat Count</label>
-                <input type="number" id="initialCarats" value="50000" min="0" step="1" oninput="calculateCarats()">
+                <input type="number" id="initialCarats" value="30000" min="0" step="1" oninput="calculateCarats()">
             </div>
             <div class="input-group">
                 <label for="teamTrials">Team Trials Rating</label>
@@ -340,6 +333,21 @@
                     <option value="4">Rating 4 (150 carats/week)</option>
                     <option value="5">Rating 5 (225 carats/week)</option>
                     <option value="6" selected>Rating 6 (375 carats/week)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="clubRank">Club Rank</label>
+                <select id="clubRank" onchange="calculateCarats()">
+                    <option value="4500">SS (4500 carats/month)</option>
+                    <option value="3600">S+ (3600 carats/month)</option>
+                    <option value="3150">S (3150 carats/month)</option>
+                    <option value="2700">A+ (2700 carats/month)</option>
+                    <option value="2250">A (2250 carats/month)</option>
+                    <option value="1800" selected>B+ (1800 carats/month)</option>
+                    <option value="1350">B (1350 carats/month)</option>
+                    <option value="900">C+ (900 carats/month)</option>
+                    <option value="450">C (450 carats/month)</option>
+                    <option value="225">D+ (225 carats/month)</option>
                 </select>
             </div>
             <div class="input-group">
@@ -376,128 +384,146 @@
     </div>
 
     <div class="panel">
-        <h2>Upcoming Banners</h2>
+        <h2>Banners</h2>
         <div id="bannersContainer"></div>
     </div>
 
     <script>
-        let banners = [
-          {
-              id: 1,
-              name: "Kawakami Princess",
-              endDate: "2025-12-10",
-              isUma: true,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30046.png",
-              active: false,
-              rolls: 200
-          },
-          {
-              id: 2,
-              name: "Seiun Sky (SSR Stamina) & Yaeno Muteki (SSR Power)",
-              endDate: "2025-12-10",
-              isUma: false,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30047.png",
-              active: false,
-              rolls: 400
-          },
-            {
-                id: 3,
-                name: "Manhattan Cafe",
-                endDate: "2025-12-16",
-                isUma: true,
-                isRerun: false,
-                imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30048.png",
-                active: false,
-                rolls: 200
-            },
-          {
-              id: 4,
-              name: "Nakayama Festa (Stamina SSR) & Sirius Symboli (Guts SR)",
-              endDate: "2025-12-16",
-              isUma: false,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30049.png",
-              active: false,
-              rolls: 400
-          },
-          {
-              id: 5,
-              name: "Symboli Rudolf & Gold City (Kimono) ",
-              endDate: "2025-12-25",
-              isUma: true,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30050.png",
-              active: false,
-              rolls: 200
-          },
-          {
-              id: 6,
-              name: "Curren Chan (Wit SSR) and Narita Brian (Stamina SSR)",
-              endDate: "2025-12-25",
-              isUma: false,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30051.png",
-              active: false,
-              rolls: 400
-          },
-          {
-              id: 7,
-              name: "Tosen Jordan",
-              endDate: "2025-12-29",
-              isUma: true,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30052.png",
-              active: false,
-              rolls: 200
-          },
-          {
-              id: 8,
-              name: "Kitasan Black (Speed SSR) & El Condor Pasa (Power SSR)",
-              endDate: "2025-12-29",
-              isUma: false,
-              isRerun: true,
-              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30053.png",
-              active: false,
-              rolls: 400
-          },
-          {
-              id: 9,
-              name: "Mejiro Dober",
-              endDate: "2026-1-7",
-              isUma: true,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30054.png",
-              active: false,
-              rolls: 200
-          },
-          {
-              id: 10,
-              name: "Daitaku Helios (Power SSR) & Vodka (Speed SR)",
-              endDate: "2026-1-7",
-              isUma: false,
-              isRerun: false,
-              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30055.png",
-              active: false,
-              rolls: 400
-          },
-        ];
+    let banners = [
+                  {
+                      id: 1,
+                      name: "Kawakami Princess",
+                      endDate: "2025-12-10",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30046.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 2,
+                      name: "Seiun Sky (SSR Stamina) & Yaeno Muteki (SSR Power)",
+                      endDate: "2025-12-10",
+                      isUma: false,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30047.png",
+                      active: false,
+                      rolls: 400
+                  },
+                    {
+                        id: 3,
+                        name: "Manhattan Cafe",
+                        endDate: "2025-12-16",
+                        isUma: true,
+                        isRerun: false,
+                        imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30048.png",
+                        active: false,
+                        rolls: 200
+                    },
+                  {
+                      id: 4,
+                      name: "Nakayama Festa (Stamina SSR) & Sirius Symboli (Guts SR)",
+                      endDate: "2025-12-16",
+                      isUma: false,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30049.png",
+                      active: false,
+                      rolls: 400
+                  },
+                  {
+                      id: 5,
+                      name: "Symboli Rudolf & Gold City (Kimono) ",
+                      endDate: "2025-12-25",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30050.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 6,
+                      name: "Curren Chan (Wit SSR) and Narita Brian (Stamina SSR)",
+                      endDate: "2025-12-25",
+                      isUma: false,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30051.png",
+                      active: false,
+                      rolls: 400
+                  },
+                  {
+                      id: 7,
+                      name: "Tosen Jordan",
+                      endDate: "2025-12-29",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30052.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 8,
+                      name: "Kitasan Black (Speed SSR) & El Condor Pasa (Power SSR)",
+                      endDate: "2025-12-29",
+                      isUma: false,
+                      isRerun: true,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30053.png",
+                      active: false,
+                      rolls: 400
+                  },
+                  {
+                      id: 9,
+                      name: "Mejiro Dober",
+                      endDate: "2026-1-7",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30054.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 10,
+                      name: "Daitaku Helios (Power SSR) & Vodka (Speed SR)",
+                      endDate: "2026-1-7",
+                      isUma: false,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30055.png",
+                      active: false,
+                      rolls: 400
+                  },
+                ];
 
-        let events = [
-            {
-                id: 1,
-                name: "Test Event",
-                date: "2000-12-20",
-                carats: 1
-            },
-            {
-                id: 2,
-                name: "Test Event 2",
-                date: "2000-1-15",
-                carats: 1
-            }
-        ];
+                let events = [
+                    {
+                        id: 1,
+                        name: "Legend Race - Vs. Biwa Hayahide",
+                        date: "2025-12-10",
+                        carats: 250
+                    },
+                    {
+                        id: 2,
+                        name: "Legend Race - Vs. Air Groove",
+                        date: "2025-12-22",
+                        carats: 250
+                    },
+                    {
+                        id: 3,
+                        name: "Legend Race - Vs. Eishin Flash",
+                        date: "2025-12-25",
+                        carats: 250
+                    },
+                    {
+                        id: 4,
+                        name: "Legend Race - Vs. Agnes Digital",
+                        date: "2025-12-28",
+                        carats: 250
+                    },
+                    {
+                        id: 999,
+                        name: "STORY EVENT",
+                        date: "2000-1-1",
+                        carats: 2270
+                    },
+                ];
 
         function renderBanners() {
             const container = document.getElementById('bannersContainer');
@@ -525,14 +551,14 @@
                 card.id = `banner-${banner.id}`;
 
                 card.innerHTML = `
-                    <div class="banner-toggle ${banner.active ? 'active' : ''}" onclick="toggleBanner(${banner.id})">
-                        ${banner.active ? '✓' : '○'}
-                    </div>
+                  <div class="banner-toggle ${banner.active ? 'active' : ''}" onclick="toggleBanner(${banner.id})">
+                                          ${banner.active ? '✓' : ''}
+                                      </div>
                     <div class="banner-info">
                         <div class="banner-title">${banner.name}</div>
                         <div class="banner-meta">
                             <span class="banner-tag">Ends: ${banner.endDate}</span>
-                            ${banner.isUma ? '<span class="banner-tag uma">Uma Banner</span>' : '<span class="banner-tag support">Support Card Banner</span>'}
+                            ${banner.isUma ? '<span class="banner-tag uma">Uma Banner</span>' : '<span class="banner-tag">Support Banner</span>'}
                             ${banner.isRerun ? '<span class="banner-tag rerun">Rerun</span>' : ''}
                         </div>
                         <div>
@@ -625,6 +651,43 @@
             return count;
         }
 
+        function getDailyLoginRewards(startDate, endDate) {
+            let totalCarats = 0;
+            let rewardDays = { monday: 0, wednesday: 0, friday: 0, sunday: 0 };
+            const current = new Date(startDate);
+            const end = new Date(endDate);
+
+            // Move to the next daily reset at 15:00 UTC
+            current.setUTCHours(15, 0, 0, 0);
+
+            if (startDate.getUTCHours() >= 15 || startDate.getTime() > current.getTime()) {
+                current.setUTCDate(current.getUTCDate() + 1);
+            }
+
+            // Check each daily reset
+            while (current <= end) {
+                const dayOfWeek = current.getUTCDay();
+
+                if (dayOfWeek === 1) { // Monday
+                    totalCarats += 25;
+                    rewardDays.monday++;
+                } else if (dayOfWeek === 3) { // Wednesday
+                    totalCarats += 25;
+                    rewardDays.wednesday++;
+                } else if (dayOfWeek === 5) { // Friday
+                    totalCarats += 25;
+                    rewardDays.friday++;
+                } else if (dayOfWeek === 0) { // Sunday
+                    totalCarats += 75;
+                    rewardDays.sunday++;
+                }
+
+                current.setUTCDate(current.getUTCDate() + 1);
+            }
+
+            return { totalCarats, rewardDays };
+        }
+
         function getEventsInPeriod(startDate, endDate) {
             let totalCarats = 0;
             let eventCount = 0;
@@ -645,6 +708,7 @@
         function calculateCarats() {
             const initialCarats = parseInt(document.getElementById('initialCarats').value) || 0;
             const teamTrials = parseInt(document.getElementById('teamTrials').value) || 1;
+            const clubRank = parseInt(document.getElementById('clubRank').value) || 1800;
             const hasMonthlyPass = document.getElementById('monthlyPass').checked;
 
             const teamTrialsCarats = {
@@ -677,7 +741,6 @@
                 const partialDay = daysDiff - fullDays;
 
                 const dailyResets = getDailyResets(currentDate, bannerDate);
-                const dailyIncome = dailyResets * 75;
 
                 const mondayCount = getMondays(currentDate, bannerDate);
                 const weeklyIncome = mondayCount * teamTrialsCarats[teamTrials];
@@ -704,7 +767,13 @@
                 const eventCarats = eventData.totalCarats;
                 const eventCount = eventData.eventCount;
 
-                const periodIncome = dailyIncome + weeklyIncome + monthlyPassBonuses + storyQuestCarats + eventCarats;
+                const loginRewards = getDailyLoginRewards(currentDate, bannerDate);
+                const loginCarats = loginRewards.totalCarats;
+
+                const clubMonthCount = getFirstOfMonths(currentDate, bannerDate);
+                const clubRankCarats = clubMonthCount * clubRank;
+
+                const periodIncome = loginCarats + weeklyIncome + monthlyPassBonuses + storyQuestCarats + eventCarats + clubRankCarats;
                 currentCarats += periodIncome;
                 totalIncome += periodIncome;
 
@@ -717,36 +786,42 @@
                 calcDiv.innerHTML = `
                     <div class="calc-row">
                         <span class="calc-label">Time until banner:</span>
-                        <span class="calc-value">${fullDays} days ${Math.floor(partialDay * 24)} hours</span>
+                        <span class="calc-value">${fullDays} ${fullDays === 1 ? 'day' : 'days'} ${Math.floor(partialDay * 24)} ${Math.floor(partialDay * 24) === 1 ? 'hour' : 'hours'}</span>
                     </div>
-                    ${dailyIncome > 0 ? `
+                    ${loginCarats > 0 ? `
                     <div class="calc-row">
-                        <span class="calc-label">Daily income:</span>
-                        <span class="calc-value positive">+${dailyIncome} (${dailyResets} days)</span>
+                        <span class="calc-label">Daily login rewards:</span>
+                        <span class="calc-value positive">+${loginCarats}</span>
                     </div>
                     ` : ''}
                     ${weeklyIncome > 0 ? `
                     <div class="calc-row">
                         <span class="calc-label">Weekly (Team Trials):</span>
-                        <span class="calc-value positive">+${weeklyIncome} (${mondayCount} weeks)</span>
+                        <span class="calc-value positive">+${weeklyIncome} (${mondayCount} ${mondayCount === 1 ? 'day' : 'days'})</span>
                     </div>
                     ` : ''}
                     ${hasMonthlyPass && monthlyPassBonuses > 0 ? `
                     <div class="calc-row">
                         <span class="calc-label">Monthly pass bonuses:</span>
-                        <span class="calc-value positive">+${monthlyPassBonuses} (${dailyResets} days${monthCount > 0 ? `, ${monthCount} month` : ''})</span>
+                        <span class="calc-value positive">+${monthlyPassBonuses} (${dailyResets} ${dailyResets === 1 ? 'day' : 'days'}${monthCount > 0 ? `, ${monthCount} ${monthCount === 1 ? 'month' : 'months'}` : ''})</span>
                     </div>
                     ` : ''}
                     ${storyQuestCarats > 0 ? `
                     <div class="calc-row">
                         <span class="calc-label">Story quests (Uma banners):</span>
-                        <span class="calc-value positive">+${storyQuestCarats} (${umaBannersBetween} uma banners)</span>
+                        <span class="calc-value positive">+${storyQuestCarats} (${umaBannersBetween} ${umaBannersBetween === 1 ? 'banner' : 'banners'})</span>
                     </div>
                     ` : ''}
                     ${eventCarats > 0 ? `
                     <div class="calc-row">
                         <span class="calc-label">Events:</span>
-                        <span class="calc-value positive">+${eventCarats} (${eventCount} events)</span>
+                        <span class="calc-value positive">+${eventCarats} (${eventCount} ${eventCount === 1 ? 'event' : 'events'})</span>
+                    </div>
+                    ` : ''}
+                    ${clubRankCarats > 0 ? `
+                    <div class="calc-row">
+                        <span class="calc-label">Club rank rewards:</span>
+                        <span class="calc-value positive">+${clubRankCarats} (${clubMonthCount} ${clubMonthCount === 1 ? 'month' : 'months'})</span>
                     </div>
                     ` : ''}
                     <div class="calc-row" style="border-top: 2px solid #e0e0ff; padding-top: 8px; margin-top: 8px;">
