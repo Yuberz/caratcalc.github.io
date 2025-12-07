@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Umamusume Carat Calculator</title>
+    <style>
+        :root {
+            --primary: #ff66aa;
+            --secondary: #f0f0f8;
+            --accent: #99ccff;
+            --text: #333333;
+            --success: #66cc66;
+            --danger: #ff6666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffeff5, #e6f0ff);
+            color: var(--text);
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin: 20px 0 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .panel {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+        }
+
+        .panel h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel h2::before {
+            content: "★";
+            color: #ffcc00;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .input-group input[type="number"],
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0ff;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input[type="number"]:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f8ff;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .banner-card {
+            background: white;
+            border: 3px solid #e0e0ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .banner-card.active {
+            border-color: var(--primary);
+            background: linear-gradient(145deg, #ffffff, #fff0f5);
+            box-shadow: 0 8px 20px rgba(255, 102, 170, 0.2);
+        }
+
+        .banner-card.insufficient {
+            border-color: var(--danger);
+            background: linear-gradient(145deg, #ffffff, #fff0f0);
+        }
+
+        .banner-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: 3px solid #e0e0ff;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .banner-toggle.active {
+            background: linear-gradient(to right, var(--primary), #ff5599);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .banner-info {
+            flex: 1;
+        }
+
+        .banner-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #5533aa;
+            margin-bottom: 8px;
+        }
+
+        .banner-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .banner-tag {
+            background: #f0f0ff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .banner-tag.support {
+            background: #e6f0ff;
+            color: #4488ff;
+        }
+
+        .banner-tag.uma {
+            background: #ffe6f5;
+            color: #ff66b3;
+        }
+
+        .banner-tag.rerun {
+            background: #fff0e6;
+            color: #ff8844;
+        }
+
+        .banner-image {
+            width: 256px;
+            height: 94px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid #e0e0ff;
+        }
+
+        .rolls-input {
+            width: 120px;
+            padding: 8px;
+            border: 2px solid #e0e0ff;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .banner-calculations {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f9ff;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .calc-label {
+            color: #666;
+        }
+
+        .calc-value {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .calc-value.negative {
+            color: var(--danger);
+        }
+
+        .calc-value.positive {
+            color: var(--success);
+        }
+
+        .results-summary {
+            background: linear-gradient(to right, var(--accent), #88bbff);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-summary h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .summary-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .summary-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .summary-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .banner-card {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-icon">🏇</div>
+        <h1>Umamusume Carat Calculator</h1>
+        <div class="subtitle">Plan your pulls and manage your carats!</div>
+    </header>
+
+    <div class="panel">
+        <h2>Player Settings</h2>
+        <div class="input-grid">
+            <div class="input-group">
+                <label for="initialCarats">Initial Carat Count</label>
+                <input type="number" id="initialCarats" value="50000" min="0" step="1" oninput="calculateCarats()">
+            </div>
+            <div class="input-group">
+                <label for="teamTrials">Team Trials Rating</label>
+                <select id="teamTrials" onchange="calculateCarats()">
+                    <option value="1">Rating 1 (0 carats/week)</option>
+                    <option value="2">Rating 2 (35 carats/week)</option>
+                    <option value="3">Rating 3 (75 carats/week)</option>
+                    <option value="4">Rating 4 (150 carats/week)</option>
+                    <option value="5">Rating 5 (225 carats/week)</option>
+                    <option value="6" selected>Rating 6 (375 carats/week)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="monthlyPass" onchange="calculateCarats()">
+                    <label for="monthlyPass">Monthly Carat Pass (+50 daily, +500 every 30 days)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultsPanel" style="display: none;">
+        <div class="results-summary">
+            <h3>📊 Calculation Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-value" id="totalDays">0</div>
+                    <div class="summary-label">Total Days</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="totalIncome">0</div>
+                    <div class="summary-label">Total Income</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="totalSpent">0</div>
+                    <div class="summary-label">Total Spent</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="finalCarats">0</div>
+                    <div class="summary-label">Final Balance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Upcoming Banners</h2>
+        <div id="bannersContainer"></div>
+    </div>
+
+    <script>
+        let banners = [
+          {
+              id: 1,
+              name: "Kawakami Princess",
+              endDate: "2025-12-10",
+              isUma: true,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30046.png",
+              active: false,
+              rolls: 200
+          },
+          {
+              id: 2,
+              name: "Seiun Sky (SSR Stamina) & Yaeno Muteki (SSR Power)",
+              endDate: "2025-12-10",
+              isUma: false,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30047.png",
+              active: false,
+              rolls: 400
+          },
+            {
+                id: 3,
+                name: "Manhattan Cafe",
+                endDate: "2025-12-16",
+                isUma: true,
+                isRerun: false,
+                imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30048.png",
+                active: false,
+                rolls: 200
+            },
+          {
+              id: 4,
+              name: "Nakayama Festa (Stamina SSR) & Sirius Symboli (Guts SR)",
+              endDate: "2025-12-16",
+              isUma: false,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30049.png",
+              active: false,
+              rolls: 400
+          },
+          {
+              id: 5,
+              name: "Symboli Rudolf & Gold City (Kimono) ",
+              endDate: "2025-12-25",
+              isUma: true,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30050.png",
+              active: false,
+              rolls: 200
+          },
+          {
+              id: 6,
+              name: "Curren Chan (Wit SSR) and Narita Brian (Stamina SSR)",
+              endDate: "2025-12-25",
+              isUma: false,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30051.png",
+              active: false,
+              rolls: 400
+          },
+          {
+              id: 7,
+              name: "Tosen Jordan",
+              endDate: "2025-12-29",
+              isUma: true,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30052.png",
+              active: false,
+              rolls: 200
+          },
+          {
+              id: 8,
+              name: "Kitasan Black (Speed SSR) & El Condor Pasa (Power SSR)",
+              endDate: "2025-12-29",
+              isUma: false,
+              isRerun: true,
+              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30053.png",
+              active: false,
+              rolls: 400
+          },
+          {
+              id: 9,
+              name: "Mejiro Dober",
+              endDate: "2026-1-7",
+              isUma: true,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30054.png",
+              active: false,
+              rolls: 200
+          },
+          {
+              id: 10,
+              name: "Daitaku Helios (Power SSR) & Vodka (Speed SR)",
+              endDate: "2026-1-7",
+              isUma: false,
+              isRerun: false,
+              imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30055.png",
+              active: false,
+              rolls: 400
+          },
+        ];
+
+        let events = [
+            {
+                id: 1,
+                name: "Test Event",
+                date: "2000-12-20",
+                carats: 1
+            },
+            {
+                id: 2,
+                name: "Test Event 2",
+                date: "2000-1-15",
+                carats: 1
+            }
+        ];
+
+        function renderBanners() {
+            const container = document.getElementById('bannersContainer');
+            container.innerHTML = '';
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const sortedBanners = [...banners]
+                .filter(banner => {
+                    const bannerDate = new Date(banner.endDate);
+                    bannerDate.setHours(0, 0, 0, 0);
+                    return bannerDate >= today;
+                })
+                .sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
+
+            if (sortedBanners.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">No upcoming banners.</p>';
+                return;
+            }
+
+            sortedBanners.forEach(banner => {
+                const card = document.createElement('div');
+                card.className = `banner-card ${banner.active ? 'active' : ''}`;
+                card.id = `banner-${banner.id}`;
+
+                card.innerHTML = `
+                    <div class="banner-toggle ${banner.active ? 'active' : ''}" onclick="toggleBanner(${banner.id})">
+                        ${banner.active ? '✓' : '○'}
+                    </div>
+                    <div class="banner-info">
+                        <div class="banner-title">${banner.name}</div>
+                        <div class="banner-meta">
+                            <span class="banner-tag">Ends: ${banner.endDate}</span>
+                            ${banner.isUma ? '<span class="banner-tag uma">Uma Banner</span>' : '<span class="banner-tag support">Support Card Banner</span>'}
+                            ${banner.isRerun ? '<span class="banner-tag rerun">Rerun</span>' : ''}
+                        </div>
+                        <div>
+                            <label style="font-size: 0.9rem; color: #666;">Target Rolls:</label>
+                            <input type="number" class="rolls-input" value="${banner.rolls}"
+                                   min="0" step="1" onchange="updateBannerRolls(${banner.id}, this.value)">
+                        </div>
+                        <div id="calc-${banner.id}" class="banner-calculations" style="display: none;"></div>
+                    </div>
+                    <img src="${banner.imageUrl}" alt="${banner.name}" class="banner-image"
+                         onerror="this.src='https://via.placeholder.com/512x188/e0e0ff/666666?text=No+Image'">
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function toggleBanner(id) {
+            const banner = banners.find(b => b.id === id);
+            if (banner) {
+                banner.active = !banner.active;
+                renderBanners();
+                calculateCarats();
+            }
+        }
+
+        function updateBannerRolls(id, value) {
+            const banner = banners.find(b => b.id === id);
+            if (banner) {
+                banner.rolls = parseInt(value) || 0;
+                calculateCarats();
+            }
+        }
+
+        function getDailyResets(startDate, endDate) {
+            let count = 0;
+            const current = new Date(startDate);
+            const end = new Date(endDate);
+
+            current.setUTCHours(15, 0, 0, 0);
+
+            if (startDate.getUTCHours() >= 15 || startDate.getTime() > current.getTime()) {
+                current.setUTCDate(current.getUTCDate() + 1);
+            }
+
+            while (current <= end) {
+                count++;
+                current.setUTCDate(current.getUTCDate() + 1);
+            }
+
+            return count;
+        }
+
+        function getMondays(startDate, endDate) {
+            let count = 0;
+            const current = new Date(startDate);
+            const end = new Date(endDate);
+
+            while (current <= end) {
+                current.setUTCDate(current.getUTCDate() + 1);
+                if (current.getUTCDay() === 1) {
+                    current.setUTCHours(15, 0, 0, 0);
+                    if (current <= end) {
+                        count++;
+                        current.setUTCDate(current.getUTCDate() + 7);
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        function getFirstOfMonths(startDate, endDate) {
+            let count = 0;
+            const current = new Date(startDate);
+            const end = new Date(endDate);
+
+            current.setUTCDate(1);
+            current.setUTCHours(0, 0, 0, 0);
+
+            if (startDate > current) {
+                current.setUTCMonth(current.getUTCMonth() + 1);
+            }
+
+            while (current <= end) {
+                count++;
+                current.setUTCMonth(current.getUTCMonth() + 1);
+            }
+
+            return count;
+        }
+
+        function getEventsInPeriod(startDate, endDate) {
+            let totalCarats = 0;
+            let eventCount = 0;
+
+            events.forEach(event => {
+                const [y, m, d] = event.date.split('-').map(Number);
+                const eventDate = new Date(y, m - 1, d, 15, 0, 0);
+
+                if (eventDate > startDate && eventDate <= endDate) {
+                    totalCarats += event.carats;
+                    eventCount++;
+                }
+            });
+
+            return { totalCarats, eventCount };
+        }
+
+        function calculateCarats() {
+            const initialCarats = parseInt(document.getElementById('initialCarats').value) || 0;
+            const teamTrials = parseInt(document.getElementById('teamTrials').value) || 1;
+            const hasMonthlyPass = document.getElementById('monthlyPass').checked;
+
+            const teamTrialsCarats = {
+                1: 0, 2: 35, 3: 75, 4: 150, 5: 225, 6: 375
+            };
+
+            const activeBanners = banners.filter(b => b.active).sort((a, b) =>
+                new Date(a.endDate) - new Date(b.endDate)
+            );
+
+            if (activeBanners.length === 0) {
+                document.getElementById('resultsPanel').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('resultsPanel').style.display = 'block';
+
+            let currentCarats = initialCarats;
+            let currentDate = new Date();
+            let totalIncome = 0;
+            let totalSpent = 0;
+
+            activeBanners.forEach((banner, index) => {
+                const [year, month, day] = banner.endDate.split('-').map(Number);
+                const bannerDate = new Date(year, month - 1, day, 23, 59, 59);
+
+                const timeDiff = bannerDate - currentDate;
+                const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+                const fullDays = Math.floor(daysDiff);
+                const partialDay = daysDiff - fullDays;
+
+                const dailyResets = getDailyResets(currentDate, bannerDate);
+                const dailyIncome = dailyResets * 75;
+
+                const mondayCount = getMondays(currentDate, bannerDate);
+                const weeklyIncome = mondayCount * teamTrialsCarats[teamTrials];
+
+                let monthlyPassBonuses = 0;
+                let monthlyPassDailyIncome = 0;
+                let monthlyPassMonthlyBonuses = 0;
+                let monthCount = 0;
+                if (hasMonthlyPass) {
+                    monthlyPassDailyIncome = dailyResets * 50;
+                    monthCount = getFirstOfMonths(currentDate, bannerDate);
+                    monthlyPassMonthlyBonuses = monthCount * 500;
+                    monthlyPassBonuses = monthlyPassDailyIncome + monthlyPassMonthlyBonuses;
+                }
+
+                const umaBannersBetween = banners.filter(b => {
+                    const [y, m, d] = b.endDate.split('-').map(Number);
+                    const bDate = new Date(y, m - 1, d, 23, 59, 59);
+                    return b.isUma && !b.isRerun && bDate > currentDate && bDate <= bannerDate;
+                }).length;
+                const storyQuestCarats = umaBannersBetween * 80;
+
+                const eventData = getEventsInPeriod(currentDate, bannerDate);
+                const eventCarats = eventData.totalCarats;
+                const eventCount = eventData.eventCount;
+
+                const periodIncome = dailyIncome + weeklyIncome + monthlyPassBonuses + storyQuestCarats + eventCarats;
+                currentCarats += periodIncome;
+                totalIncome += periodIncome;
+
+                const rollCost = banner.rolls * 150;
+                const caratsAfterPull = currentCarats - rollCost;
+                const isInsufficient = caratsAfterPull < 0;
+
+                const calcDiv = document.getElementById(`calc-${banner.id}`);
+                calcDiv.style.display = 'block';
+                calcDiv.innerHTML = `
+                    <div class="calc-row">
+                        <span class="calc-label">Time until banner:</span>
+                        <span class="calc-value">${fullDays} days ${Math.floor(partialDay * 24)} hours</span>
+                    </div>
+                    ${dailyIncome > 0 ? `
+                    <div class="calc-row">
+                        <span class="calc-label">Daily income:</span>
+                        <span class="calc-value positive">+${dailyIncome} (${dailyResets} days)</span>
+                    </div>
+                    ` : ''}
+                    ${weeklyIncome > 0 ? `
+                    <div class="calc-row">
+                        <span class="calc-label">Weekly (Team Trials):</span>
+                        <span class="calc-value positive">+${weeklyIncome} (${mondayCount} weeks)</span>
+                    </div>
+                    ` : ''}
+                    ${hasMonthlyPass && monthlyPassBonuses > 0 ? `
+                    <div class="calc-row">
+                        <span class="calc-label">Monthly pass bonuses:</span>
+                        <span class="calc-value positive">+${monthlyPassBonuses} (${dailyResets} days${monthCount > 0 ? `, ${monthCount} month` : ''})</span>
+                    </div>
+                    ` : ''}
+                    ${storyQuestCarats > 0 ? `
+                    <div class="calc-row">
+                        <span class="calc-label">Story quests (Uma banners):</span>
+                        <span class="calc-value positive">+${storyQuestCarats} (${umaBannersBetween} uma banners)</span>
+                    </div>
+                    ` : ''}
+                    ${eventCarats > 0 ? `
+                    <div class="calc-row">
+                        <span class="calc-label">Events:</span>
+                        <span class="calc-value positive">+${eventCarats} (${eventCount} events)</span>
+                    </div>
+                    ` : ''}
+                    <div class="calc-row" style="border-top: 2px solid #e0e0ff; padding-top: 8px; margin-top: 8px;">
+                        <span class="calc-label">Carats available:</span>
+                        <span class="calc-value positive">${currentCarats.toLocaleString()}</span>
+                    </div>
+                    <div class="calc-row">
+                        <span class="calc-label">Pull cost (${banner.rolls} rolls):</span>
+                        <span class="calc-value negative">-${rollCost.toLocaleString()}</span>
+                    </div>
+                    <div class="calc-row" style="border-top: 2px solid #e0e0ff; padding-top: 8px; margin-top: 8px; font-size: 1.1rem;">
+                        <span class="calc-label"><strong>After pulling:</strong></span>
+                        <span class="calc-value ${isInsufficient ? 'negative' : 'positive'}">
+                            ${caratsAfterPull.toLocaleString()}
+                            ${isInsufficient ? ' ⚠️ INSUFFICIENT' : ' ✓'}
+                        </span>
+                    </div>
+                `;
+
+                const bannerCard = document.getElementById(`banner-${banner.id}`);
+                if (isInsufficient) {
+                    bannerCard.classList.add('insufficient');
+                    currentCarats = 0;
+                } else {
+                    bannerCard.classList.remove('insufficient');
+                    currentCarats = caratsAfterPull;
+                }
+
+                totalSpent += rollCost;
+                currentDate = bannerDate;
+            });
+
+            if (activeBanners.length > 0) {
+                const firstBanner = activeBanners[0];
+                const lastBanner = activeBanners[activeBanners.length - 1];
+                const [y2, m2, d2] = lastBanner.endDate.split('-').map(Number);
+                const lastDate = new Date(y2, m2 - 1, d2, 23, 59, 59);
+                const now = new Date();
+                const totalDays = Math.floor((lastDate - now) / (1000 * 60 * 60 * 24));
+                document.getElementById('totalDays').textContent = totalDays;
+            } else {
+                document.getElementById('totalDays').textContent = '0';
+            }
+            document.getElementById('totalIncome').textContent = totalIncome.toLocaleString();
+            document.getElementById('totalSpent').textContent = totalSpent.toLocaleString();
+            document.getElementById('finalCarats').textContent = currentCarats.toLocaleString();
+        }
+
+        renderBanners();
+        calculateCarats();
+    </script>
+</body>
+</html>
