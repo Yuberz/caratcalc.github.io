@@ -1,0 +1,141 @@
+let banners = [
+              {
+                  id: 1,
+                  name: "Kawakami Princess",
+                  endDate: "2025-12-10",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30046.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 2,
+                  name: "Seiun Sky (SSR Stamina) & Yaeno Muteki (SSR Power)",
+                  endDate: "2025-12-10",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/en/gacha/img_bnr_gacha_30047.png",
+                  active: false,
+                  rolls: 400
+              },
+                {
+                    id: 3,
+                    name: "Manhattan Cafe",
+                    endDate: "2025-12-16",
+                    isUma: true,
+                    isRerun: false,
+                    imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30048.png",
+                    active: false,
+                    rolls: 200
+                },
+              {
+                  id: 4,
+                  name: "Nakayama Festa (Stamina SSR) & Sirius Symboli (Guts SR)",
+                  endDate: "2025-12-16",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30049.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 5,
+                  name: "Symboli Rudolf & Gold City (Kimono) ",
+                  endDate: "2025-12-25",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30050.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 6,
+                  name: "Curren Chan (Wit SSR) and Narita Brian (Stamina SSR)",
+                  endDate: "2025-12-25",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30051.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 7,
+                  name: "Tosen Jordan",
+                  endDate: "2025-12-29",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30052.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 8,
+                  name: "Kitasan Black (Speed SSR) & El Condor Pasa (Power SSR)",
+                  endDate: "2025-12-29",
+                  isUma: false,
+                  isRerun: true,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30053.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 9,
+                  name: "Mejiro Dober",
+                  endDate: "2026-1-7",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30054.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 10,
+                  name: "Daitaku Helios (Power SSR) & Vodka (Speed SR)",
+                  endDate: "2026-1-7",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30055.png",
+                  active: false,
+                  rolls: 400
+              },
+            ];
+
+            let events = [
+                {
+                    id: 1,
+                    name: "Legend Race - Vs. Biwa Hayahide",
+                    date: "2025-12-10",
+                    carats: 250
+                },
+                {
+                    id: 2,
+                    name: "Legend Race - Vs. Air Groove",
+                    date: "2025-12-22",
+                    carats: 250
+                },
+                {
+                    id: 3,
+                    name: "Legend Race - Vs. Eishin Flash",
+                    date: "2025-12-25",
+                    carats: 250
+                },
+                {
+                    id: 4,
+                    name: "Legend Race - Vs. Agnes Digital",
+                    date: "2025-12-28",
+                    carats: 250
+                },
+                {
+                    id: 5,
+                    name: "Orchestra in Late Autumn Story Event",
+                    date: "2025-12-14",
+                    carats: 2270
+                },
+                {
+                    id: 999,
+                    name: "STORY EVENT",
+                    date: "2000-1-1",
+                    carats: 2270
+                },
+            ];
