@@ -197,6 +197,11 @@
         }
 
         .banner-tag.uma {
+            background: #ffeaf5;
+            color: #fa609c;
+        }
+
+        .banner-tag.support {
             background: #e6f0ff;
             color: #4488ff;
         }
@@ -325,16 +330,16 @@
                 <input type="number" id="initialCarats" value="30000" min="0" step="1" oninput="calculateCarats()">
             </div>
             <div class="input-group">
-                <label for="teamTrials">Team Trials Rating</label>
-                <select id="teamTrials" onchange="calculateCarats()">
-                    <option value="1">Rating 1 (0 carats/week)</option>
-                    <option value="2">Rating 2 (35 carats/week)</option>
-                    <option value="3">Rating 3 (75 carats/week)</option>
-                    <option value="4">Rating 4 (150 carats/week)</option>
-                    <option value="5">Rating 5 (225 carats/week)</option>
-                    <option value="6" selected>Rating 6 (375 carats/week)</option>
-                </select>
-            </div>
+                            <label for="teamTrials">Team Trials Rating</label>
+                            <select id="teamTrials" onchange="calculateCarats()">
+                                <option value="6" selected>Rating 6 (375 carats/week)</option>
+                                <option value="5">Rating 5 (225 carats/week)</option>
+                                <option value="4">Rating 4 (150 carats/week)</option>
+                                <option value="3">Rating 3 (75 carats/week)</option>
+                                <option value="2">Rating 2 (35 carats/week)</option>
+                                <option value="1">Rating 1 (0 carats/week)</option>
+                            </select>
+                        </div>
             <div class="input-group">
                 <label for="clubRank">Club Rank</label>
                 <select id="clubRank" onchange="calculateCarats()">
@@ -348,6 +353,7 @@
                     <option value="900">C+ (900 carats/month)</option>
                     <option value="450">C (450 carats/month)</option>
                     <option value="225">D+ (225 carats/month)</option>
+                    <option value="0">No club (0 carats/month)</option>
                 </select>
             </div>
             <div class="input-group">
@@ -592,6 +598,106 @@
                       active: false,
                       rolls: 400
                   },
+                  {
+                      id: 21,
+                      name: "Sakura Chiyono O",
+                      endDate: "2026-2-16",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30066.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 22,
+                      name: "Riko Kashimoto (Pal SSR) & Tazuna Hayakawa (Pal SSR)",
+                      endDate: "2026-2-16",
+                      isUma: false,
+                      isRerun: true,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30067.png",
+                      active: false,
+                      rolls: 400
+                  },
+                  {
+                      id: 23,
+                      name: "Mihono Bourbon (Valentine) & Eishin Flash (Valentine)",
+                      endDate: "2026-2-25",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30068.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 24,
+                      name: "Nishino Flower (Wit SSR) & Sakura Bakushin O (Guts SSR)",
+                      endDate: "2026-2-25",
+                      isUma: false,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30069.png",
+                      active: false,
+                      rolls: 400
+                  },
+                  {
+                      id: 25,
+                      name: "Mejiro Ardan",
+                      endDate: "2026-3-2",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30070.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 26,
+                      name: "Agnes Digital (Power SSR) & Ines Fujin (Wit SR)",
+                      endDate: "2026-3-2",
+                      isUma: false,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30071.png",
+                      active: false,
+                      rolls: 400
+                  },
+                  {
+                      id: 27,
+                      name: "Admire Vega",
+                      endDate: "2026-3-7",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30072.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 28,
+                      name: "Fine Motion (Wit SSR) & Kawakami Princess (Speed SSR)",
+                      endDate: "2026-3-7",
+                      isUma: false,
+                      isRerun: true,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30073.png",
+                      active: false,
+                      rolls: 400
+                  },
+                  {
+                      id: 29,
+                      name: "Kitasan Black & Matikanetannhauser",
+                      endDate: "2026-3-16",
+                      isUma: true,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30074.png",
+                      active: false,
+                      rolls: 200
+                  },
+                  {
+                      id: 30,
+                      name: "Narita Top Road (Speed SSR), Admire Vega (Guts SR), Sakura Bakushin O (Power SR), & Mejiro Ryan (Stamina SR)",
+                      endDate: "2026-3-16",
+                      isUma: false,
+                      isRerun: false,
+                      imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30075.png",
+                      active: false,
+                      rolls: 400
+                  },
                 ];
                 let events = [
                     {
@@ -658,8 +764,68 @@
                     },
                     {
                         id: 11,
+                        name: "Legend Race - Vs. Nice Nature",
+                        date: "2026-1-20",
+                        carats: 250
+                    },
+                    {
+                        id: 12,
+                        name: "Legend Race - Vs. Grass Wonder",
+                        date: "2026-1-23",
+                        carats: 250
+                    },
+                    {
+                        id: 13,
+                        name: "Legend Race - Vs. Oguri Cap",
+                        date: "2026-1-26",
+                        carats: 250
+                    },
+                    {
+                        id: 14,
                         name: "Blossoming New Year's Karuta Contest Story Event",
                         date: "2026-1-26",
+                        carats: 2270
+                    },
+                    {
+                        id: 15,
+                        name: "Champions Meeting - Capricorn Cup",
+                        date: "2026-2-19",
+                        carats: 0
+                    },
+                    {
+                        id: 16,
+                        name: "Patisserie Grandeur Story Event",
+                        date: "2026-2-15",
+                        carats: 2270
+                    },
+                    {
+                        id: 17,
+                        name: "Legend Race - Vs. Hishi Amazon",
+                        date: "2026-2-24",
+                        carats: 250
+                    },
+                    {
+                        id: 18,
+                        name: "Legend Race - Vs. Mejiro Dober",
+                        date: "2026-2-27",
+                        carats: 250
+                    },
+                    {
+                        id: 19,
+                        name: "Legend Race - Vs. Gold City",
+                        date: "2026-3-2",
+                        carats: 250
+                    },
+                    {
+                        id: 15,
+                        name: "Champions Meeting - Aquarius Cup",
+                        date: "2026-3-11",
+                        carats: 0
+                    },
+                    {
+                        id: 16,
+                        name: "Flapping Run-up! Story Event",
+                        date: "2026-3-6",
                         carats: 2270
                     },
                     {
@@ -669,7 +835,6 @@
                         carats: 2270
                     },
                 ];
-
 
         function renderBanners() {
             const container = document.getElementById('bannersContainer');
@@ -704,7 +869,7 @@
                         <div class="banner-title">${banner.name}</div>
                         <div class="banner-meta">
                             <span class="banner-tag">Ends: ${banner.endDate}</span>
-                            ${banner.isUma ? '<span class="banner-tag uma">Uma Banner</span>' : '<span class="banner-tag">Support Banner</span>'}
+                            ${banner.isUma ? '<span class="banner-tag uma">Uma Banner</span>' : '<span class="banner-tag support">Support Card Banner</span>'}
                             ${banner.isRerun ? '<span class="banner-tag rerun">Rerun</span>' : ''}
                         </div>
                         <div>

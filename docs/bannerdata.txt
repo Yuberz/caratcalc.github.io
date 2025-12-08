@@ -201,6 +201,106 @@ let banners = [
                   active: false,
                   rolls: 400
               },
+              {
+                  id: 21,
+                  name: "Sakura Chiyono O",
+                  endDate: "2026-2-16",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30066.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 22,
+                  name: "Riko Kashimoto (Pal SSR) & Tazuna Hayakawa (Pal SSR)",
+                  endDate: "2026-2-16",
+                  isUma: false,
+                  isRerun: true,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30067.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 23,
+                  name: "Mihono Bourbon (Valentine) & Eishin Flash (Valentine)",
+                  endDate: "2026-2-25",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30068.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 24,
+                  name: "Nishino Flower (Wit SSR) & Sakura Bakushin O (Guts SSR)",
+                  endDate: "2026-2-25",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30069.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 25,
+                  name: "Mejiro Ardan",
+                  endDate: "2026-3-2",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30070.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 26,
+                  name: "Agnes Digital (Power SSR) & Ines Fujin (Wit SR)",
+                  endDate: "2026-3-2",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30071.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 27,
+                  name: "Admire Vega",
+                  endDate: "2026-3-7",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30072.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 28,
+                  name: "Fine Motion (Wit SSR) & Kawakami Princess (Speed SSR)",
+                  endDate: "2026-3-7",
+                  isUma: false,
+                  isRerun: true,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30073.png",
+                  active: false,
+                  rolls: 400
+              },
+              {
+                  id: 29,
+                  name: "Kitasan Black & Matikanetannhauser",
+                  endDate: "2026-3-16",
+                  isUma: true,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30074.png",
+                  active: false,
+                  rolls: 200
+              },
+              {
+                  id: 30,
+                  name: "Narita Top Road (Speed SSR), Admire Vega (Guts SR), Sakura Bakushin O (Power SR), & Mejiro Ryan (Stamina SR)",
+                  endDate: "2026-3-16",
+                  isUma: false,
+                  isRerun: false,
+                  imageUrl: "https://gametora.com/images/umamusume/gacha/img_bnr_gacha_30075.png",
+                  active: false,
+                  rolls: 400
+              },
             ];
             let events = [
                 {
@@ -267,8 +367,68 @@ let banners = [
                 },
                 {
                     id: 11,
+                    name: "Legend Race - Vs. Nice Nature",
+                    date: "2026-1-20",
+                    carats: 250
+                },
+                {
+                    id: 12,
+                    name: "Legend Race - Vs. Grass Wonder",
+                    date: "2026-1-23",
+                    carats: 250
+                },
+                {
+                    id: 13,
+                    name: "Legend Race - Vs. Oguri Cap",
+                    date: "2026-1-26",
+                    carats: 250
+                },
+                {
+                    id: 14,
                     name: "Blossoming New Year's Karuta Contest Story Event",
                     date: "2026-1-26",
+                    carats: 2270
+                },
+                {
+                    id: 15,
+                    name: "Champions Meeting - Capricorn Cup",
+                    date: "2026-2-19",
+                    carats: 0
+                },
+                {
+                    id: 16,
+                    name: "Patisserie Grandeur Story Event",
+                    date: "2026-2-15",
+                    carats: 2270
+                },
+                {
+                    id: 17,
+                    name: "Legend Race - Vs. Hishi Amazon",
+                    date: "2026-2-24",
+                    carats: 250
+                },
+                {
+                    id: 18,
+                    name: "Legend Race - Vs. Mejiro Dober",
+                    date: "2026-2-27",
+                    carats: 250
+                },
+                {
+                    id: 19,
+                    name: "Legend Race - Vs. Gold City",
+                    date: "2026-3-2",
+                    carats: 250
+                },
+                {
+                    id: 15,
+                    name: "Champions Meeting - Aquarius Cup",
+                    date: "2026-3-11",
+                    carats: 0
+                },
+                {
+                    id: 16,
+                    name: "Flapping Run-up! Story Event",
+                    date: "2026-3-6",
                     carats: 2270
                 },
                 {
