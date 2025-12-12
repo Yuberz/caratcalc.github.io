@@ -594,6 +594,8 @@
             rewardDays.sunday++
           }
 
+          // Daily Mission income, every day.
+          totalCarats += 75
           current.setUTCDate(current.getUTCDate() + 1)
         }
 
@@ -730,8 +732,8 @@
                       loginCarats > 0
                         ? `
                     <div class="calc-row">
-                        <span class="calc-label">Daily login rewards:</span>
-                        <span class="calc-value positive">+${loginCarats}</span>
+                        <span class="calc-label">Daily rewards:</span>
+                        <span class="calc-value positive">+${loginCarats} (${dailyResets} ${dailyResets === 1 ? 'day' : 'days'})</span>
                     </div>
                     `
                         : ''
