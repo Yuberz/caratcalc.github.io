@@ -10,7 +10,6 @@ A Umamusume: Pretty Derby income calculator. Access the website [here.](https://
 - Does not currently have all banners listed.
 - Does not currently account for future event income very accurately. (Has to be entered manually, and cygames could change carats earned).
 - Janky site behavior in general. Lots is subject to change.
-- Doesn't support Champions Meeting (yet).
 
 ## TODO
 - Add all of the upcoming banners up to JP.
@@ -18,7 +17,6 @@ A Umamusume: Pretty Derby income calculator. Access the website [here.](https://
 - Restyle the site to look better/more umamusume-like?
 - Add HELP button to explain how to use the calculator and some of its eccentricities.
 - Add a credit at the bottom that links to this repository.
-- Add basic Champions Meeting support.
 
 ## FAQ
 ### What are some of the calculator's "eccentricities"?
