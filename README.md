@@ -1,5 +1,5 @@
 # CaratCalc
-A Umamusume: Pretty Derby income calculator. Access the website [here.](https://yuberz.github.io/caratcalc.github.io/)
+A Umamusume: Pretty Derby carat calculator. Access the website [here.](https://yuberz.github.io/caratcalc.github.io/)
 
 ## Features
 - Calculates guaranteed income between banners.
