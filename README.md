@@ -32,3 +32,4 @@ A Umamusume: Pretty Derby carat calculator. Access the website [here.](https://y
 ## Credits
 - All images are pulled from [Gametora](https://gametora.com/umamusume/gacha) in order to have a consistent appearance.
 - Date predictions for future banners are taken from [uma.moe](https://uma.moe).
+- Some carat predictions are taken from [Henry Handsome's Carat Calculator](https://www.youtube.com/@HenryHandsomeDerby).
