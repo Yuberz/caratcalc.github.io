@@ -114,7 +114,7 @@ const banners = [
   {
     id: 11,
     name: 'Oguri Cap (Christmas) & Biwa Hayahide (Christmas)',
-    endDate: '2026-1-18',
+    endDate: '2026-1-20',
     isUma: true,
     isRerun: false,
     imageUrl:
@@ -125,7 +125,7 @@ const banners = [
   {
     id: 12,
     name: 'Mayano Top Gun (Speed SSR) & Narita Taishin (Wit SSR)',
-    endDate: '2026-1-18',
+    endDate: '2026-1-20',
     isUma: false,
     isRerun: false,
     imageUrl:
@@ -136,7 +136,7 @@ const banners = [
   {
     id: 13,
     name: 'Fine Motion',
-    endDate: '2026-1-22',
+    endDate: '2026-1-23',
     isUma: true,
     isRerun: false,
     imageUrl:
@@ -147,7 +147,7 @@ const banners = [
   {
     id: 14,
     name: 'Manhattan Cafe (Stamina SSR) & Inari One (Power SR)',
-    endDate: '2026-1-22',
+    endDate: '2026-1-23',
     isUma: false,
     isRerun: false,
     imageUrl:
@@ -158,7 +158,7 @@ const banners = [
   {
     id: 15,
     name: 'Tamamo Cross',
-    endDate: '2026-1-28',
+    endDate: '2026-1-31',
     isUma: true,
     isRerun: false,
     imageUrl:
@@ -169,7 +169,7 @@ const banners = [
   {
     id: 16,
     name: 'Nice Nature (Wit SSR) & Oguri Cap (Power SSR)',
-    endDate: '2026-1-28',
+    endDate: '2026-1-31',
     isUma: false,
     isRerun: true,
     imageUrl:
@@ -180,7 +180,7 @@ const banners = [
   {
     id: 17,
     name: 'Haru Urara (New Year) & T.M. Opera O (New Year)',
-    endDate: '2026-2-6',
+    endDate: '2026-2-9',
     isUma: true,
     isRerun: false,
     imageUrl:
@@ -191,7 +191,7 @@ const banners = [
   {
     id: 18,
     name: 'Admire Vega (Power SSR) & Matikanefukukitaru (Speed SSR)',
-    endDate: '2026-2-6',
+    endDate: '2026-2-9',
     isUma: false,
     isRerun: false,
     imageUrl:
@@ -367,14 +367,13 @@ const events = [
     id: 6,
     name: 'Orchestra in Late Autumn Story Event',
     date: '2025-12-14',
-    carats: 2270,
+    carats: 2160,
   },
   {
     id: 7,
     name: "Fuji Kiseki's Showtime Event!",
     date: '2026-12-24',
     carats: 0,
-    //Carat income is unknown for this event right now. UPDATE ON RELEASE DATE!
   },
   {
     id: 8,
@@ -382,42 +381,42 @@ const events = [
     date: '2026-1-7',
     carats: 'CM',
   },
-  // This is where the dates become estimated.
   {
     id: 9,
-    name: 'Miracles of the Holy Night Story Event',
-    date: '2026-1-3',
-    carats: 2270,
+    name: 'Hungry for a Miracle Story Event',
+    date: '2026-1-5',
+    carats: 2160,
   },
   {
     id: 10,
     name: 'Champions Meeting - Sagittarius Cup',
-    date: '2026-1-27',
+    date: '2026-1-29',
     carats: 'CM',
   },
   {
     id: 11,
     name: 'Legend Race - Vs. Nice Nature',
-    date: '2026-1-20',
+    date: '2026-1-22',
     carats: 250,
   },
   {
     id: 12,
     name: 'Legend Race - Vs. Grass Wonder',
-    date: '2026-1-23',
+    date: '2026-1-25',
     carats: 250,
   },
   {
     id: 13,
     name: 'Legend Race - Vs. Oguri Cap',
-    date: '2026-1-26',
+    date: '2026-1-28',
     carats: 250,
   },
+  // This is where the dates become estimated.
   {
     id: 14,
     name: "Blossoming New Year's Karuta Contest Story Event",
     date: '2026-1-26',
-    carats: 2270,
+    carats: 2160,
   },
   {
     id: 15,
@@ -429,7 +428,7 @@ const events = [
     id: 16,
     name: 'Patisserie Grandeur Story Event',
     date: '2026-2-15',
-    carats: 2270,
+    carats: 2160,
   },
   {
     id: 17,
@@ -459,12 +458,12 @@ const events = [
     id: 16,
     name: 'Flapping Run-up! Story Event',
     date: '2026-3-6',
-    carats: 2270,
+    carats: 2160,
   },
   {
     id: 999,
     name: 'STORY EVENT',
     date: '2000-1-1',
-    carats: 2270,
+    carats: 2160,
   },
 ]
